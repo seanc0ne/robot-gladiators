@@ -25,7 +25,7 @@ var fight = function(enemyName) {
   if (promptFight === "fight" || promptFight === "FIGHT") {
   while(enemyHealth > 0) {
       // remove enemy's health by subtracting the amount set in the playerAttack variable
-      enemyHealth = enemyHealth - playerAttack;
+      enemyHealth = Math.max(0, enemyHealth - playerAttack);
       console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
       );
       // check enemy's health
@@ -35,7 +35,7 @@ var fight = function(enemyName) {
         window.alert(enemyName + " still has " + enemyHealth + " health left.");
       }
       // remove player's health by subtracting the amount set in the enemyAttack variable
-      playerHealth = playerHealth - enemyAttack;
+      playerHealth = Math.max(0, playerHealth - enemyAttack);
       console.log(
         enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
       );
@@ -55,7 +55,7 @@ var fight = function(enemyName) {
     if (confirmSkip) {
       window.alert(playerName + " has decided to skip this fight. Goodbye!");
       // subtract money from playerMoney for skipping
-      playerMoney = playerMoney - 2;
+      playerMoney = Math.max(0, playerMoney - 10);
       // player quits
       return
     }
